@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<style>
+    body {
+        background: #f0f4fa;
+    }
+    .section {
+        text-align: center;
+    }
+    .images-grid {
+        justify-content: center;
+    }
+
+    /* Animations */
+    .profile {
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeInUp 0.8s forwards;
+    }
+    .profile:nth-child(1) { animation-delay: 0.1s; }
+    .profile:nth-child(2) { animation-delay: 0.2s; }
+    .profile:nth-child(3) { animation-delay: 0.3s; }
+    .profile:nth-child(4) { animation-delay: 0.4s; }
+
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About | PS Knowledge Hub</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background: #f9f9f9;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .images-grid {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .profile {
+            background: #c9d4c7;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            padding: 16px;
+            text-align: center;
+            width: 180px;
+        }
+        .profile img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+        .profile span {
+            display: block;
+            font-weight: bold;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>About PS Knowledge Hub</h1>
+    <p>
+        PS Knowledge Hub is dedicated to empowering students through quality education and mentorship. Our founders and students together create a vibrant learning community.
+    </p>
+
+    <div class="section">
+        <h2>Founders</h2>
+        <div class="images-grid">
+            <div class="profile">
+                <img src="doraman.jpg" alt="Founder 1">
+                <span>T Sai Santhoshi</span>
+                <span>M.Tech</span>
+            </div>
+            <div class="profile">
+                <img src="photo.jpg" alt="Founder 2">
+                <span>M Pradeep Kumar</span>
+                <span>BTech</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Institute Gallery</h2>
+        <div class="images-grid">
+            <div class="profile">
+                <img src="student1.jpg" alt="Tutor">
+                <span>P Avinash</span>
+                <P>(BTech)</P>
+                <p>CSE</p>
+            </div>
+            <div class="profile">
+                <img src="student2.jpg" alt="Tutor">
+                <span>Venkatesh</span>
+                <P>(BTech)</P>
+                <p>CSE</p>
+            </div>
+           
+            </div>
+        </div>
+    </div>
+</body>
+</html>

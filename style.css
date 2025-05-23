@@ -1,0 +1,163 @@
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  background-color: #f8f9fa;
+  color: #333;
+}
+header {
+  background: #4b6cb7;
+  color: #fff;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+nav ul li .btn {
+  background: #fff;
+  color: #4b6cb7;
+  padding: 8px 15px;
+  border-radius: 5px;
+}
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(to right, #4b6cb7, #182848);
+  color: white;
+}
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+.hero .btn {
+  padding: 12px 25px;
+  background: #fff;
+  color: #4b6cb7;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 8px;
+}
+
+.features {
+  padding: 60px 20px;
+  background: #fff;
+  text-align: center;
+}
+.features h2 {
+  margin-bottom: 40px;
+}
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+.card {
+  background: #f0f4ff;
+  border-radius: 10px;
+  padding: 25px;
+  width: 280px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+.card h3 {
+  margin-bottom: 10px;
+  color: #4b6cb7;
+}
+
+.about {
+  background: #eef1f9;
+  padding: 60px 20px;
+  text-align: center;
+}
+footer {
+  background: #4b6cb7;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+footer a {
+  color: #fff;
+  text-decoration: underline;
+}
+/* === Animation Setup === */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Apply animations to sections */
+.features, .about, footer {
+  animation: fadeIn 1.2s ease-in-out both;
+}
+
+/* Animate each feature card */
+.card {
+  animation: fadeInUp 1s ease forwards;
+  opacity: 0;
+}
+
+/* Delay animation for each card */
+.card:nth-child(1) {
+  animation-delay: 0.2s;
+}
+.card:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.card:nth-child(3) {
+  animation-delay: 0.6s;
+}
+.card:nth-child(4) {
+  animation-delay: 0.8s;
+}
+
+/* Smooth scrolling behavior */
+html {
+  scroll-behavior: smooth;
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+  .grid {
+    flex-direction: column;
+    align-items: center;
+  }
+  .card {
+    width: 90%;
+  }
+}

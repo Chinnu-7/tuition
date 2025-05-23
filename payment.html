@@ -1,0 +1,159 @@
+    <!-- Payment Option HTML for PS Knowledge Hub -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+        form {
+            background: #fff;
+            max-width: 400px;
+            margin: 40px auto;
+            padding: 24px 32px 32px 32px;
+            border-radius: 10px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+        }
+        h2 {
+            margin-top: 0;
+            color: #333;
+            font-size: 1.3em;
+        }
+        label {
+            font-size: 1em;
+            color: #444;
+            cursor: pointer;
+        }
+        input[type="text"] {
+            width: 100%;
+            margin: 8px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+        button[type="submit"] {
+            width: 100%;
+            background: #0078d4;
+            color: #fff;
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            font-size: 1.1em;
+            margin-top: 16px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        button[type="submit"]:hover {
+            background: #005fa3;
+        }
+        #upi-details {
+            margin-top: 10px;
+            max-height: 500px;
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.4s;
+            opacity: 0;
+            display: none;
+        }
+        #upi-details.active {
+            opacity: 1;
+            display: block;
+        }
+        .upi-qr {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .upi-qr img {
+            width: 160px;
+            height: 160px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            background: #fff;
+        }
+        .upi-id {
+            font-size: 1.05em;
+            color: #222;
+            margin-bottom: 8px;
+            background: #f1f1f1;
+            padding: 6px 12px;
+            border-radius: 5px;
+            word-break: break-all;
+        }
+        .upi-apps {
+            display: flex;
+            gap: 10px;
+            margin-top: 8px;
+            justify-content: center;
+        }
+        .upi-apps a {
+            display: inline-block;
+            padding: 6px 10px;
+            background: #e6f0fa;
+            border-radius: 5px;
+            color: #0078d4;
+            text-decoration: none;
+            font-size: 0.98em;
+            border: 1px solid #b3d6f7;
+            transition: background 0.2s;
+        }
+        .upi-apps a:hover {
+            background: #d0e7fa;
+        }
+    </style>
+<form action="/process-payment" method="POST">
+    <h2>Choose Payment Method</h2>
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+        <label>
+            <input type="radio" name="payment_method" value="credit_card" checked>
+            Credit/Debit Card
+        </label>
+        <label>
+            <input type="radio" name="payment_method" value="paypal">
+            PayPal
+        </label>
+        <label>
+            <input type="radio" name="payment_method" value="upi">
+            UPI
+        </label>
+    </div>
+    <div id="card-details" style="margin-top:10px; max-height: 500px; overflow: hidden; transition: max-height 0.4s ease, opacity 0.4s;">
+        <input type="text" name="card_number" placeholder="Card Number" required>
+        <input type="text" name="expiry" placeholder="MM/YY" required>
+        <input type="text" name="cvv" placeholder="CVV" required>
+    </div>
+    <button type="submit">Pay Now</button>
+</form>
+<script>
+    // Show/hide card details with animation based on payment method
+    const radios = document.querySelectorAll('input[name="payment_method"]');
+    const cardDetails = document.getElementById('card-details');
+    function toggleCardDetails(show) {
+        if (show) {
+            cardDetails.style.maxHeight = '500px';
+            cardDetails.style.opacity = '1';
+            cardDetails.style.overflow = 'hidden';
+            cardDetails.style.display = 'block';
+        } else {
+            cardDetails.style.maxHeight = '0';
+            cardDetails.style.opacity = '0';
+            cardDetails.style.overflow = 'hidden';
+            // Wait for transition to finish before hiding
+            setTimeout(() => {
+                if (cardDetails.style.opacity === '0') {
+                    cardDetails.style.display = 'none';
+                }
+            }, 400);
+        }
+    }
+    radios.forEach(radio => {
+        radio.addEventListener('change', function() {
+            toggleCardDetails(this.value === 'credit_card');
+        });
+    });
+    // Initialize state on page load
+    toggleCardDetails(document.querySelector('input[name="payment_method"]:checked').value === 'credit_card');
+</script>
